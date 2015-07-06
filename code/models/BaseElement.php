@@ -25,7 +25,7 @@ class BaseElement extends Widget {
 	private static $summary_fields = array(
 		'ID',
 		'Title',
-		'Type'
+		'ElementType'
 	);
 
 	/**
@@ -102,7 +102,7 @@ class BaseElement extends Widget {
 		return _t(__CLASS__, $this->config()->title);
 	}
 
-	public function getType() {
+	public function getElementType() {
 		return $this->i18n_singular_name();
 	}
 
@@ -113,7 +113,7 @@ class BaseElement extends Widget {
 			if(!$this->isInDb()) {
 				return;
 			}
-			
+
 			return $this->config()->title;
 		}
 	}
@@ -159,8 +159,8 @@ class BaseElement extends Widget {
 
 	public function getPage() {
 		$area = $this->Parent();
-		
-		if($area instanceof ElementalArea) {		
+
+		if($area instanceof ElementalArea) {
 			return $area->getOwnerPage();
 		}
 
