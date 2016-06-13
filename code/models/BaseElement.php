@@ -155,24 +155,56 @@ class BaseElement extends Widget
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function canView($member = null)
     {
-        return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
+        if(!Permission::check('CMS_ACCESS_CMSMain', 'any', $member)
+            && !Permission::check('CMS_ACCESS_BlogPostManagementAdmin', 'any', $member)){
+            return false;
+        }
+
+        return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function canEdit($member = null)
     {
-        return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
+        if(!Permission::check('CMS_ACCESS_CMSMain', 'any', $member)
+            && !Permission::check('CMS_ACCESS_BlogPostManagementAdmin', 'any', $member)){
+            return false;
+        }
+
+        return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function canDelete($member = null)
     {
-        return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
+        if(!Permission::check('CMS_ACCESS_CMSMain', 'any', $member)
+            && !Permission::check('CMS_ACCESS_BlogPostManagementAdmin', 'any', $member)){
+            return false;
+        }
+
+        return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public function canCreate($member = null)
     {
-        return Permission::check('CMS_ACCESS_CMSMain', 'any', $member);
+        if(!Permission::check('CMS_ACCESS_CMSMain', 'any', $member)
+            && !Permission::check('CMS_ACCESS_BlogPostManagementAdmin', 'any', $member)){
+            return false;
+        }
+
+        return true;
     }
 
     public function ControllerTop()
