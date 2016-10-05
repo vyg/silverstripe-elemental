@@ -104,8 +104,8 @@ class BaseElement extends Widget
             $virtual->getConfig()
                 ->getComponentByType('GridFieldDataColumns')
                 ->setDisplayFields(array(
-                    'Parent.getOwnerPage.Title' => 'Title',
-                    'Parent.getOwnerPage.Link' => 'Link'
+                    'getOwnerPage.Title' => 'Title',
+                    'getOwnerPage.Link' => 'Link'
                 ));
         }
 
@@ -118,6 +118,14 @@ class BaseElement extends Widget
         }
 
         return $fields;
+    }
+
+    public function getOwnerPage() {
+        if ($this->ParentID > 0) {
+            return $this->Parent()->getOwnerPage();
+        } else if ($this->ListID > 0) {
+            return $this->List()->getOwnerPage();
+        }
     }
 
     /**
