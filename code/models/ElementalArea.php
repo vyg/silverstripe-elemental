@@ -17,9 +17,6 @@ class ElementalArea extends WidgetArea
         $list->sort('Sort ASC');
 
         $list = $list->forForeignID($this->ID);
-        $list = $list->filter(array(
-            'Enabled' => 1
-        ));
 
         return $list;
     }
@@ -28,7 +25,11 @@ class ElementalArea extends WidgetArea
      * @return HasManyList
      */
     public function ItemsToRender() {
-        return $this->Elements();
+        $list = $$this->Elements()->filter(array(
+            'Enabled' => 1
+        ));
+        
+        return $list;
     }
 
     /**
