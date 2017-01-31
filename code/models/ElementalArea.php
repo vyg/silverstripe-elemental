@@ -25,10 +25,10 @@ class ElementalArea extends WidgetArea
      * @return HasManyList
      */
     public function ItemsToRender() {
-        $list = $$this->Elements()->filter(array(
+        $list = $this->Elements()->filter(array(
             'Enabled' => 1
         ));
-        
+
         return $list;
     }
 
